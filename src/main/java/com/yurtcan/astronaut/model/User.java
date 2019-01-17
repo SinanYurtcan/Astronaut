@@ -1,12 +1,18 @@
 package com.yurtcan.astronaut.model;
 
 import java.util.Date;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -55,10 +61,12 @@ public class User {
   @Column(name = "modified_by", length = 256)
   private Long modifiedBy;
 
-//  @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//  @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-//  private Set<Role> roles;
-
+  @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+  @JoinTable(
+          name = "user_roles",
+          joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+          inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
+  private Set<Role> roles;
 
 }
 
