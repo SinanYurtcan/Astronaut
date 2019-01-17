@@ -1,1 +1,1 @@
-INSERT INTO users (email, first_name, last_name, password, user_name) VALUES ('devadmin@astronaut.com', 'devadmin', 'devadmin', '1234', 'devadmin');
+INSERT INTO users (email, first_name, last_name, password, user_name) VALUES ('devadmin@astronaut.com', 'devadmin', 'devadmin', '$2a$10$.Fo5TYHbd3Hv0gwKyab.rODO1..yGikFDU5JI.aMasy6ETJgSxRly', 'devadmin');

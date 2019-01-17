@@ -11,9 +11,11 @@ import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
 @Table(name = "users")
 public class User {
@@ -23,7 +25,7 @@ public class User {
   @Column(name = "id")
   private Integer id;
 
-  @Column(name = "user_name", length = 256)
+  @Column(name = "user_name", nullable = false, unique = true, length = 256)
   private String userName;
 
   @Column(name = "password", length = 256)
@@ -38,12 +40,24 @@ public class User {
   @Column(name = "email", length = 256)
   private String email;
 
-//  @Column(name = "enabled")
-//  private boolean enabled;
-//  private Date creationDate;
-//  private Date modificationDate;
-//  private Long createdBy;
-//  private Long modifiedBy;
+  @Column(name = "enabled")
+  private Integer enabled;
+
+  @Column(name = "creation_date", length = 256)
+  private Date creationDate;
+
+  @Column(name = "modification_date", length = 256)
+  private Date modificationDate;
+
+  @Column(name = "created_by", length = 256)
+  private Long createdBy;
+
+  @Column(name = "modified_by", length = 256)
+  private Long modifiedBy;
+
+//  @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//  @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+//  private Set<Role> roles;
 
 
 }
