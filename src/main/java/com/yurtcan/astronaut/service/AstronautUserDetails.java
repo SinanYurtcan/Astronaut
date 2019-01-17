@@ -1,13 +1,11 @@
 package com.yurtcan.astronaut.service;
 
 import java.util.Collection;
-import java.util.stream.Collectors;
 
 import com.yurtcan.astronaut.model.User;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 @Getter
