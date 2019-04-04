@@ -1,18 +1,21 @@
 package com.yurtcan.astronaut.model;
 
 import java.util.Date;
-import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,11 +25,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Table(name = "roles")
-public class Role {
+@Table(name = "household")
+public class Household {
 
   @Id
-  @GeneratedValue
+  @GeneratedValue(strategy= GenerationType.IDENTITY)
   @Column(name = "id")
   private Integer id;
 
@@ -46,12 +49,10 @@ public class Role {
   @Enumerated(EnumType.STRING)
   private EntityStatus status;
 
-  @NotNull
-  @Enumerated(EnumType.STRING)
-  @Column(name = "name", length = 50)
-  private RoleName name;
+  @Column(name = "name", nullable = false, unique = true, length = 256)
+  private String name;
 
-  @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)
-  private List<User> users;
 
 }
+
+

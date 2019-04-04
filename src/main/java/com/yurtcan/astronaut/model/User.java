@@ -6,6 +6,8 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -31,6 +33,22 @@ public class User {
   @Column(name = "id")
   private Integer id;
 
+  @Column(name = "creation_date", length = 256)
+  private Date creationDate;
+
+  @Column(name = "modification_date", length = 256)
+  private Date modificationDate;
+
+  @Column(name = "created_by", length = 256)
+  private Long createdBy;
+
+  @Column(name = "modified_by", length = 256)
+  private Long modifiedBy;
+
+  @Column(name = "status", length = 1)
+  @Enumerated(EnumType.STRING)
+  private EntityStatus status;
+
   @Column(name = "user_name", nullable = false, unique = true, length = 256)
   private String userName;
 
@@ -48,18 +66,6 @@ public class User {
 
   @Column(name = "enabled")
   private Integer enabled;
-
-  @Column(name = "creation_date", length = 256)
-  private Date creationDate;
-
-  @Column(name = "modification_date", length = 256)
-  private Date modificationDate;
-
-  @Column(name = "created_by", length = 256)
-  private Long createdBy;
-
-  @Column(name = "modified_by", length = 256)
-  private Long modifiedBy;
 
   @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
   @JoinTable(
