@@ -1,6 +1,7 @@
 package com.yurtcan.astronaut.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,7 +12,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -24,8 +24,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Table(name = "item")
-public class Item {
+@Table(name = "item_category")
+public class ItemCategory {
 
   @Id
   @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -51,9 +51,8 @@ public class Item {
   @Column(name = "name", nullable = false, unique = true, length = 256)
   private String name;
 
-  @ManyToOne
-  @JoinColumn(name="item_category", nullable=false)
-  private ItemCategory itemCategory;
+  @OneToMany(mappedBy = "itemCategory")
+  private List<Item> items;
 
 }
 

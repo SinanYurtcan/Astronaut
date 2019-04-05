@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Households</title>
+</head>
+<body>
+<h1>This is the list of the households</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>Household name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="household : ${households}">
+        <td th:text="${household.name}"></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+
+</html>
