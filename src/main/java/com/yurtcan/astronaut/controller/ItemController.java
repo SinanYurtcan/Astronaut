@@ -1,5 +1,8 @@
 package com.yurtcan.astronaut.controller;
 
+import java.util.List;
+
+import com.yurtcan.astronaut.model.Item;
 import com.yurtcan.astronaut.repository.ItemRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,7 +24,8 @@ public class ItemController {
 
     logger.trace("We are testing a trace log entry from the class: " + this.getClass().getName());
 
-    model.addAttribute("items", itemRepository.findAll());
+    List<Item> items = itemRepository.findAll();
+    model.addAttribute("items", items);
     return "items";
   }
 }

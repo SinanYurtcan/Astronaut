@@ -16,7 +16,7 @@
     <tbody>
     <tr th:each="item : ${items}">
         <td th:text="${item.name}"></td>
-        <td th:text="${item.category}"></td>
+        <td th:text="${item.itemCategory.name}"></td>
     </tr>
     </tbody>
 </table>
