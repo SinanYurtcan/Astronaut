@@ -19,13 +19,13 @@ public class ItemController {
   @Autowired
   ItemRepository itemRepository;
 
-  @RequestMapping("/items")
+  @RequestMapping("/item/list")
   public String listItems(Model model) {
 
     logger.trace("We are testing a trace log entry from the class: " + this.getClass().getName());
 
     List<Item> items = itemRepository.findAll();
     model.addAttribute("items", items);
-    return "items";
+    return "item-list";
   }
 }

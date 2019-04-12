@@ -16,12 +16,12 @@ public class HouseholdController {
   @Autowired
   HouseholdRepository householdRepository;
 
-  @RequestMapping("/households")
+  @RequestMapping("/household/list")
   public String listHouseholds(Model model) {
 
     logger.trace("We are testing a trace log entry from the class: " + this.getClass().getName());
 
     model.addAttribute("households", householdRepository.findAll());
-    return "households";
+    return "household-list";
   }
 }

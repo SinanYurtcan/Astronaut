@@ -7,11 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.yurtcan.astronaut.model.helper.EntityListener;
@@ -28,8 +25,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-@Table(name = "item")
-public class Item implements Persistable {
+@Table(name = "household_item")
+public class HouseholdItem implements Persistable {
 
   @Id
   @GeneratedValue
@@ -54,10 +51,6 @@ public class Item implements Persistable {
 
   @Column(name = "name", nullable = false, unique = true, length = 256)
   private String name;
-
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name="item_category", nullable=false)
-  private ItemCategory itemCategory;
 
 }
 

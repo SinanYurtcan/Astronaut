@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
@@ -14,18 +15,23 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import com.yurtcan.astronaut.model.helper.EntityListener;
+import com.yurtcan.astronaut.model.helper.EntityStatus;
+import com.yurtcan.astronaut.model.helper.Persistable;
+import com.yurtcan.astronaut.model.helper.RoleName;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
+@EntityListeners(EntityListener.class)
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @Table(name = "roles")
-public class Role {
+public class Role implements Persistable {
 
   @Id
   @GeneratedValue

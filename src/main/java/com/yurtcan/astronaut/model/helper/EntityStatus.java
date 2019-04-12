@@ -1,4 +1,4 @@
-package com.yurtcan.astronaut.model;
+package com.yurtcan.astronaut.model.helper;
 
 public enum EntityStatus {
   A,  // Active
